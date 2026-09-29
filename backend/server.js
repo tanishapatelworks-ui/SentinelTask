@@ -20,6 +20,7 @@ const taskRoutes = require("./routes/taskRoutes");
 const userRoutes = require("./routes/userRoutes");
 const milestoneRoutes = require("./routes/milestoneRoutes");
 const notificationRoutes = require("./routes/notificationRoutes");
+const aiRoutes = require("./routes/aiRoutes");
 
 // ======================================================
 // CREATE EXPRESS APP
@@ -75,6 +76,12 @@ app.use("/api/milestones", milestoneRoutes);
 app.use("/api/notifications", notificationRoutes);
 
 // ======================================================
+// AI MONITORING ROUTES
+// ======================================================
+
+app.use("/api/ai", aiRoutes);
+
+// ======================================================
 // PROJECT API TEST
 // ======================================================
 
@@ -93,6 +100,7 @@ app.get("/api/test", (req, res) => {
   res.status(200).json({
     success: true,
     message: "SentinelTask API is working",
+
     routes: {
       auth: "/api/auth",
       projects: "/api/projects",
@@ -100,6 +108,7 @@ app.get("/api/test", (req, res) => {
       users: "/api/users",
       milestones: "/api/milestones",
       notifications: "/api/notifications",
+      ai: "/api/ai",
     },
   });
 });
@@ -160,6 +169,7 @@ const startServer = async () => {
       console.log("Users         : /api/users");
       console.log("Milestones    : /api/milestones");
       console.log("Notifications : /api/notifications");
+      console.log("AI Monitor    : /api/ai");
       console.log("--------------------------------------");
       console.log("Project Test  : /api/projects-test");
       console.log("API Test      : /api/test");
